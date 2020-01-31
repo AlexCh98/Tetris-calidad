@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Tetris</string>
+    <string name="start">start</string>
+    <string name="next">next</string>
+    <string name="Jugar">Jugar</string>
+    <string name="puntuacion">Puntuacion:</string>
+    <string name="despizq">despIzq</string>
+    <string name="despder">despder</string>
+    <string name="rotader">rotaDer</string>
+    <string name="rotaizq">rotaIzq</string>
+    <string name="baja">baja</string>
+    <string name="Ranking">Ranking</string>
+    <string name="Modo">Clasico</string>
+    <string name="Configuracion">Configuracion</string>
+    <string name="volverAtras">ATRAS</string>
+    <string name="Salir">Salir</string>
+    <string name="gameOver">GAME OVER</string>
+    <string name="nombre">Insertar nombre</string>
+    <string name="añadir">Añadir</string>
+    <string name="verRanking">GUARDAR RANKING</string>
+    <string name="tryAgain">JUGAR DE NUEVO</string>
+    <string name="anterior">ANT</string>
+    <string name="siguiente">SIG</string>
+</resources>

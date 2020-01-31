@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ActivityGameOver"
+    android:background="@drawable/pepe"
+    >
+
+    <LinearLayout
+        android:layout_width="155dp"
+        android:layout_height="52dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:id="@+id/botonVolver"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00FFFFFF"
+            android:enabled="false"
+            android:onClick="volverAlMain"
+            android:src="@drawable/menu"
+            android:text="@string/volverAtras" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26999998"
+        tools:layout_editor_absoluteX="150dp"
+        android:gravity="center"
+        tools:ignore="MissingConstraints">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/gameOver"
+            android:layout_marginBottom="30dp"
+            android:textSize="30sp"
+            android:src="@drawable/gameover"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.26" />
+
+        <TextView
+            android:id="@+id/textViewPuntuacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="30dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+
+            <EditText
+                android:id="@+id/entradaNombre"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:textSize="20sp"
+                android:background="#d0d0d0"
+                android:inputType="textPersonName"
+                android:maxLength="256"
+                android:autofillHints="@string/nombre"
+                tools:ignore="MissingConstraints"/>
+
+
+            <Button
+                android:id="@+id/botonAñadir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/añadir"
+                android:onClick="insertarNombre"
+                tools:ignore="MissingConstraints"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/botonTryagain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tryAgain"
+                android:enabled="false"
+                android:onClick="jugarDeNuevo"/>
+
+            <Button
+                android:id="@+id/botonVerRanking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/verRanking"
+                android:enabled="false"
+                android:onClick="verRanking"/>
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
