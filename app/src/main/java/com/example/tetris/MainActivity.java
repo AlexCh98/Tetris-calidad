@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         this.imagenModo = (ImageView) findViewById(R.id.vistaModo);
         this.imagenModo.setImageResource(R.drawable.clasico);
+        patata
         this.paleta = getIntent().getIntExtra("paleta",0);
         this.inicializarListaDeModos();
 
