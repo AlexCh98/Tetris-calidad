@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        patata
         this.imagenModo = (ImageView) findViewById(R.id.vistaModo);
         this.imagenModo.setImageResource(R.drawable.clasico);
         this.paleta = getIntent().getIntExtra("paleta",0);
