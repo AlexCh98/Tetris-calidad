@@ -340,6 +340,14 @@ public class ActivityRanking extends Activity{
     }
 
 
+    public void cargarDatos(File file) {
+        // TODO
+    }
 
+
+    public List<DatosRanking> getListaDatos() {
+        // TODO
+        return null;
+    }
 }
 
