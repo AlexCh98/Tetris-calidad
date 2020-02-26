@@ -39,3 +39,7 @@ addons:
 
 script:
   - ./gradlew sonarqube
+branches:
+  only: 
+    - master
+    - develop
