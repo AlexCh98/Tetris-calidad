@@ -38,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
         this.imagenModo = (ImageView) findViewById(R.id.vistaModo);
         this.imagenModo.setImageResource(R.drawable.clasico);
         this.paleta = getIntent().getIntExtra("paleta",0);
-        patataaa
+        for (int i = 0; i < 2; i++) {
+            System.out.println("Patata");
+        }
         this.inicializarListaDeModos();
         checkearPermisos();
 
