@@ -15,6 +15,7 @@ import java.util.List;
 
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class ActivityRankingTest {
@@ -38,6 +39,11 @@ public class ActivityRankingTest {
 
         activityRanking.cargarDatos(file);
         assertThat(activityRanking.getListaDatos(), is(listExpected));
+    }
+
+    @Test
+    public void escribirDato() throws IOException {
+        assertEquals(12,5);
     }
 
 }

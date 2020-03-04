@@ -349,5 +349,18 @@ public class ActivityRanking extends Activity{
         // TODO
         return null;
     }
+
+    public void setListaDatos(List<DatosRanking> listaDatos){
+        // TODO
+    }
+
+    public void escribirDato(DatosRanking dato){
+        // TODO
+    }
+
+    public String getRutaFichero(){
+        // TODO
+        return null;
+    }
 }
 
