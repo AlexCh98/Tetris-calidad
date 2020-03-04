@@ -315,11 +315,8 @@ public class ActivityRanking extends Activity{
 
     public void bajarRanking(View v){
         if(this.listaDatos.size() != 0  && this.datoVisible< this.listaDatos.size()-1){
-
             this.datoVisible++;
             mostrarDatos();
-
-
         }
     }
 
