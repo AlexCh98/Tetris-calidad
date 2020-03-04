@@ -16,10 +16,11 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class ChangeTextBehaviorTest {
+public class RankingBehaviorTest {
 
     private String textBeforeNombre;
     private String textBeforeModo;
@@ -28,6 +29,10 @@ public class ChangeTextBehaviorTest {
     @Rule
     public ActivityTestRule<ActivityRanking> activityRanking
             = new ActivityTestRule<>(ActivityRanking.class);
+
+    /*@Rule
+    public IntentsTestRule<A> intentsTestRule =
+            new IntentsTestRule<>(MyActivity.class);*/
 
     @Before
     public void initValidString() {
@@ -51,4 +56,13 @@ public class ChangeTextBehaviorTest {
         onView(withId(R.id.textViewRanking3)).check(matches(withText(textBeforePuntuacion)));
 
     }
+
+    @Test
+    public void launchMainActivity() {
+        onView(withId(R.id.botonVolverEnRanking)).perform(click());
+
+        assertTrue(activityRanking.getActivity().isFinishing());
+
+    }
+
 }
