@@ -315,11 +315,8 @@ public class ActivityRanking extends Activity{
 
     public void bajarRanking(View v){
         if(this.listaDatos.size() != 0  && this.datoVisible< this.listaDatos.size()-1){
-
             this.datoVisible++;
             mostrarDatos();
-
-
         }
     }
 
@@ -340,6 +337,27 @@ public class ActivityRanking extends Activity{
     }
 
 
+    public void cargarDatos(File file) {
+        // TODO
+    }
 
+
+    public List<DatosRanking> getListaDatos() {
+        // TODO
+        return null;
+    }
+
+    public void setListaDatos(List<DatosRanking> listaDatos){
+        // TODO
+    }
+
+    public void escribirDato(DatosRanking dato){
+        // TODO
+    }
+
+    public String getRutaFichero(){
+        // TODO
+        return null;
+    }
 }
 
