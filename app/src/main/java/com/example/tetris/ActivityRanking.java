@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -33,7 +32,7 @@ public class ActivityRanking extends Activity {
 
     private String extensionImagen = "IMG";
     private String rutaFichero = "RankingTetris.txt";
-    private final int apartadosRanking = 10;
+    private static final int apartadosRanking = 10;
 
     private ImageView imageViewRanking;
     private TextView textViewRankingNombre;
@@ -46,6 +45,7 @@ public class ActivityRanking extends Activity {
 
     private int datoVisible = 0;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         super.onCreate(savedInstanceState);
@@ -60,9 +60,7 @@ public class ActivityRanking extends Activity {
         this.textViewRankingModo = findViewById(R.id.textViewRanking2);
         this.textViewRankingPuntuacion = findViewById(R.id.textViewRanking3);
 
-
         listaDatos = new ArrayList<>();
-
         ranking();
     }
 
@@ -74,117 +72,94 @@ public class ActivityRanking extends Activity {
             cargarDatos();
             mostrarDatos();
         }
-
     }
 
     private String asignarId() {
-
         String auxId;
         boolean idAsignado = true;
         int intId;
 
         do {
-
             intId = (int) (Math.random() * (102) - 2); //Genera un numero aleatorio entre 0 y 99 incluidos
 
             auxId = intId + this.extensionImagen;
 
             for (DatosRanking aux : this.listaDatos) {
-
                 if (aux.getId().compareTo(auxId) == 0) {
                     idAsignado = false;
                 }
-
             }
 
         } while (!idAsignado);
-
         return auxId;
 
     }
 
 
     private void mostrarDatos() {
-        if (this.listaDatos.size() == 0) {
-
+        if (this.listaDatos.isEmpty()) {
             this.imageViewRanking.setImageBitmap(null);
-            this.textViewRankingNombre.setText("Sin datos");
-            this.textViewRankingModo.setText("Sin datos");
-            this.textViewRankingPuntuacion.setText("Sin datos");
-
+            String sinDatos = "Sin datos";
+            this.textViewRankingNombre.setText(sinDatos);
+            this.textViewRankingModo.setText(sinDatos);
+            this.textViewRankingPuntuacion.setText(sinDatos);
         } else {
-
             String text1 = "";
             String text2 = "";
             String text3 = "";
-
 
             text1 = meteEspacios("Nombre", 15) + "\n";
             text2 = meteEspacios("Modo", 10) + "\n";
             text3 = meteEspacios("Puntuacion", 10) + "\n";
 
-
             text1 = text1 + meteEspacios(this.listaDatos.get(this.datoVisible).getNombre(), 15) + "\n";
             text2 = text2 + meteEspacios(this.listaDatos.get(this.datoVisible).getModo(), 10) + "\n";
             text3 = text3 + this.listaDatos.get(this.datoVisible).getPuntuacion() + "\n";
 
-
             this.textViewRankingNombre.setText(text1);
             this.textViewRankingModo.setText(text2);
             this.textViewRankingPuntuacion.setText(text3);
-
             this.imageViewRanking.setImageBitmap(this.listaDatos.get(this.datoVisible).getImagen());
-
         }
     }
 
     public String meteEspacios(String aux, int espacios) {
         if (aux.length() < espacios) {
-            for (int i = aux.length(); i < espacios; i++) {
-                aux = aux + " ";
+            StringBuilder auxBuilder = new StringBuilder(aux);
+            for (int i = auxBuilder.length(); i < espacios; i++) {
+                auxBuilder.append(" ");
             }
+            aux = auxBuilder.toString();
         } else if (aux.length() > espacios) {
             aux = aux.substring(0, espacios - 1);
         }
-
         aux = aux + " ";
-
         return aux;
     }
 
-    public void subirRanking(View v) {
-        if (this.listaDatos.size() != 0 && this.datoVisible > 0) {
-
+    public void subirRanking() {
+        if (!this.listaDatos.isEmpty() && this.datoVisible > 0) {
             this.datoVisible--;
             mostrarDatos();
-
-
         }
     }
 
-    public void bajarRanking(View v) {
-        if (this.listaDatos.size() != 0 && this.datoVisible < this.listaDatos.size() - 1) {
-
+    public void bajarRanking() {
+        if (!this.listaDatos.isEmpty() && this.datoVisible < this.listaDatos.size() - 1) {
             this.datoVisible++;
             mostrarDatos();
-
-
         }
     }
 
 
-    public void volverAtras(View v) {
+    public void volverAtras() {
         if (this.datoNuevo) {
             finish();
         } else {
-
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-
             finish();
-
         }
-
     }
 
     public String getRutaFichero() {
@@ -192,50 +167,46 @@ public class ActivityRanking extends Activity {
     }
 
     public void setRutaFichero(String name) {
-        //System.out.println(file.getAbsolutePath());
         this.rutaFichero = name;
-        //System.out.println(this.rutaFichero);
     }
 
     public void cargarDatos() {
-        String aux;
-        String aux1;
-        String id;
-        String nombre;
-        String modo;
-        String puntuacion;
+        String aux = "";
         Bitmap imagenAux = null;
+        BufferedReader buffer = null;
         try {
-            BufferedReader buffer =
+            buffer =
                     new BufferedReader(
                             new InputStreamReader(
                                     openFileInput(this.rutaFichero)));
-            while ((aux = buffer.readLine()) != null) {
-                String[] parser = aux.split("/");
-
-               /* aux1 = aux;
-                id = aux1.substring(0, aux1.indexOf("/"));
-                aux = aux1.substring(aux1.indexOf("/") + 1);
-                nombre = aux1.substring(0, aux1.indexOf("/"));
-                aux1 = aux1.substring(aux.indexOf("/") + 1);
-                modo = aux1.substring(0, aux1.indexOf("/"));
-                aux1 = aux1.substring(aux1.indexOf("/") + 1);
-                puntuacion = aux1;*/
-                String path = Environment.getExternalStorageDirectory().toString();
-                File fileImage = new File(path, parser[0] + ".png");
-                try {
-                    FileInputStream fileImagen = new FileInputStream(fileImage);
-                    imagenAux = BitmapFactory.decodeStream(fileImagen);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                DatosRanking datos = new DatosRanking(parser[0], parser[1], parser[2], Integer.parseInt(parser[3]), imagenAux);
-                this.listaDatos.add(datos);
-            }
-            buffer.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        while (true) {
+            try {
+                if (!((aux = buffer.readLine()) != null)) break;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String[] parser = aux.split("/");
+            String path = Environment.getExternalStorageDirectory().toString();
+            File fileImage = new File(path, parser[0] + ".png");
+            try {
+                FileInputStream fileImagen = new FileInputStream(fileImage);
+                imagenAux = BitmapFactory.decodeStream(fileImagen);
+            } catch (IOException e) {
+                //e.printStackTrace();
+                System.out.println(e);
+            }
+            DatosRanking datos = new DatosRanking(parser[0], parser[1], parser[2], Integer.parseInt(parser[3]), imagenAux);
+            this.listaDatos.add(datos);
+        }
+        try {
+            buffer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public List<DatosRanking> getListaDatos() {
@@ -250,7 +221,7 @@ public class ActivityRanking extends Activity {
     public void escribirDatoNuevo(DatosRanking dato) {
         cargarDatos();
         DatosRanking datos = null;
-        if(dato == null) {
+        if (dato == null) {
             String id = asignarId();
 
             String nombre = getIntent().getStringExtra("nombre");
@@ -258,7 +229,7 @@ public class ActivityRanking extends Activity {
             int puntuacion = getIntent().getIntExtra("puntuacion", 0);
             Bitmap imagen = getIntent().getParcelableExtra("imagen");
             datos = new DatosRanking(id, nombre, modo, puntuacion, imagen);
-        }else{
+        } else {
             datos = dato;
         }
         this.listaDatos.add(datos);
@@ -295,7 +266,6 @@ public class ActivityRanking extends Activity {
                 String path = Environment.getExternalStorageDirectory().toString();
                 File file = new File(path, aux.getId() + ".png");
                 OutputStream outputStream = new FileOutputStream(file);
-                //outputStream = new FileOutputStream(file);
                 imagenAux = aux.getImagen();
                 imagenAux.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
                 outputStream.flush();
