@@ -24,7 +24,6 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.List;
 
 
@@ -138,15 +137,17 @@ public class ActivityRanking extends Activity {
     }
 
     public void subirRanking() {
-        if (!this.listaDatos.isEmpty() && this.datoVisible > 0) {
-            this.datoVisible--;
+        if (!this.listaDatos.isEmpty()) {
+            int size = this.listaDatos.size();
+            this.datoVisible = (this.datoVisible + size - 1) % size;
             mostrarDatos();
         }
     }
 
     public void bajarRanking() {
-        if (!this.listaDatos.isEmpty() && this.datoVisible < this.listaDatos.size() - 1) {
-            this.datoVisible++;
+        if (!this.listaDatos.isEmpty()) {
+            int size = this.listaDatos.size();
+            this.datoVisible = (this.datoVisible + 1) % size;
             mostrarDatos();
         }
     }
@@ -276,6 +277,18 @@ public class ActivityRanking extends Activity {
             e.printStackTrace();
         }
         finish();
+    }
+
+    public void bajarRanking(View view) {
+        this.bajarRanking();
+    }
+
+    public void subirRanking(View view) {
+        this.subirRanking();
+    }
+
+    public void volverAtras(View view){
+        this.volverAtras();
     }
 }
 
