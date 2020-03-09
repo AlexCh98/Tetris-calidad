@@ -26,9 +26,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-
 public class ActivityRanking extends Activity {
-
     private String extensionImagen = "IMG";
     private String rutaFichero = "RankingTetris.txt";
     private static final int apartadosRanking = 10;
@@ -62,7 +60,6 @@ public class ActivityRanking extends Activity {
         listaDatos = new ArrayList<>();
         ranking();
     }
-
 
     private void ranking() {
         if (datoNuevo) {
@@ -213,8 +210,6 @@ public class ActivityRanking extends Activity {
     public List<DatosRanking> getListaDatos() {
         return this.listaDatos;
     }
-
-
     public void setListaDatos(List<DatosRanking> listaDatos) {
         this.listaDatos = listaDatos;
     }
