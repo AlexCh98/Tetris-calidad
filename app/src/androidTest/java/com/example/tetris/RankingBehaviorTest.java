@@ -2,6 +2,7 @@ package com.example.tetris;
 
 import android.widget.TextView;
 
+import androidx.test.espresso.action.ViewActions;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
@@ -14,6 +15,7 @@ import org.junit.runner.RunWith;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.assertTrue;
@@ -59,6 +61,9 @@ public class RankingBehaviorTest {
 
     @Test
     public void launchMainActivity() {
+
+        ViewActions.closeSoftKeyboard();
+        onView(withId(R.id.botonVolverEnRanking)).check(matches(isCompletelyDisplayed()));
         onView(withId(R.id.botonVolverEnRanking)).perform(click());
 
         assertTrue(activityRanking.getActivity().isFinishing());
