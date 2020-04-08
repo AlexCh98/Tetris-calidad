@@ -1,5 +1,7 @@
 package com.example.tetris;
 
+import java.util.Arrays;
+
 public class Pieza implements Cloneable{
     private int[][] matrizCoords;
     private int color;
@@ -33,8 +35,8 @@ public class Pieza implements Cloneable{
             case 6:
                 this.crearPieza6(6);
                 break;
-            case 7:
-                this.crearPieza7(7);
+            case 8:
+                this.crearPieza8(7);
                 break;
             default:
         }
@@ -82,9 +84,9 @@ public class Pieza implements Cloneable{
         this.rota = true;
     }
 
-    private void crearPieza7(int color) {
+    private void crearPieza8(int color) {
         this.color = color;
-        this.matrizCoords = new int[][]{{3,4}, {3,3},{2,2},{2,3}};
+        this.matrizCoords = new int[][]{{3,4},{3, 3}, {3, 5}};
         this.rota = true;
     }
 
@@ -94,6 +96,20 @@ public class Pieza implements Cloneable{
 
     public int getColor(){
         return this.color;
+    }
+
+    @Override
+    public String toString() {
+        return "Pieza{" +
+                "matrizCoords=" + Arrays.toString(matrizCoords) +
+                ", color=" + color +
+                ", rota=" + rota +
+                ", centroMatrizX=" + centroMatrizX +
+                ", centroMatrizY=" + centroMatrizY +
+                ", posicionX=" + posicionX +
+                ", posicionY=" + posicionY +
+                ", posicionBitImportante=" + posicionBitImportante +
+                '}';
     }
 
     private boolean[][] convertirAMatriz(){

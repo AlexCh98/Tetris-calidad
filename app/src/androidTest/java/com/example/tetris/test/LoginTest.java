@@ -7,9 +7,11 @@ import android.content.Intent;
 import androidx.test.rule.ActivityTestRule;
 
 import com.example.tetris.ActivityClasico;
+import com.example.tetris.Pieza;
 import com.example.tetris.R;
 import junit.framework.TestCase;
 
+import org.junit.Assert;
 import org.junit.Rule;
 
 import cucumber.api.PendingException;
@@ -21,8 +23,11 @@ import cucumber.api.java.en.When;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.matcher.ViewMatchers.assertThat;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertNull;
+import static org.junit.Assert.assertEquals;
 
 
 public class LoginTest {
@@ -31,39 +36,32 @@ public class LoginTest {
     ActivityTestRule rule = new ActivityTestRule<>(ActivityClasico.class, false, false);
 
     private ActivityClasico activity;
-    @Before("@music-feature")
+    @Before("@piece-feature")
     public void setup() {
         //activityTestRule.launchActivity(new Intent());
         //activity = activityTestRule.getActivity();*/
         rule.launchActivity(null);
     }
 
-    @After("@music-feature")
+    @After("@piece-feature")
     public void tearDown() {
         //activityTestRule.finishActivity();
         rule.getActivity().finish();
 
     }
 
-    @Given("^I am on activity screen")
+    @Given("^The user has began the game$")
     public void i_am_on_activity_clasico() throws Throwable {
         onView(withId(R.id.button1)).perform(click());
         //TestCase.assertNotNull(activity);
     }
 
-    @When("^I press the button$")
-    public void i_press_button() throws Throwable {
-        //throw new PendingException();
-       // wait(100);
-        onView(withId(R.id.musicButton)).perform(click());
-
-    }
-
-    @Then("^The music stops$")
-    public void the_music_stops() throws Throwable {
-        //wait(100);
-        //TestCase.assertNotNull(activity);
-        //throw new PendingException();
+    @Then("^You have to positionate the new piece$")
+    public void you_have_to_positionate_the_new_piece() throws Throwable {
+        Pieza nueva = new Pieza(8);
+        assertEquals(2,2);
+        assertEquals(nueva,activity.getPiezas().get(0));
+        assertEquals(nueva,activity.getPiezas().get(0));
     }
 
 }
