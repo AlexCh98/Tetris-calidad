@@ -66,8 +66,8 @@ public class ActivityClasico extends Activity {
         this.reglas = new Reglas();
         Intent intent = getIntent();
         this.modoDeJuego = intent.getStringExtra("modo");
-        this.paletaSeleccionada = intent.getIntExtra("paleta", 0);
-
+        this.paletaSeleccionada = intent.getIntExtra("paleta",0);
+        this.piezas.add(new Pieza(8));
         ListaCeldas = new ArrayList<ImageView>(200);
         ayuda = findViewById(R.id.a1);
         ListaCeldas.add(ayuda);
@@ -668,6 +668,11 @@ public class ActivityClasico extends Activity {
 
     int cont = 0;
 
+
+    public List<Pieza> getPiezas() {
+        return piezas;
+    }
+
     public void executea() {
 
         this.puntuacion = 0;
@@ -675,14 +680,14 @@ public class ActivityClasico extends Activity {
         TextView muestraPuntos = (TextView) findViewById(R.id.textView3);
 
         for (int i = 0; i < this.nPiezasEnElArray; i++) {
-            Pieza pieza = new Pieza((int) (Math.random() * 7 + 1));
+            Pieza pieza = new Pieza(8);
             piezas.add(pieza);
         }
 
         Pieza piezaActual = piezas.get(0);
         piezas.remove(0);
         tablero.actualizarTablero(piezaActual.getCoords(), piezaActual.getColor());
-        Pieza pieza = new Pieza((int) (Math.random() * 7 + 1));
+        Pieza pieza = new Pieza((int) (8));
         piezas.add(pieza);
 
         this.reproductor = MediaPlayer.create(this, R.raw.mix);
@@ -699,11 +704,11 @@ public class ActivityClasico extends Activity {
                 piezaActual = piezas.get(0);
                 piezas.remove(0);
                 tablero.actualizarTablero(piezaActual.getCoords(), piezaActual.getColor());
-                Pieza aux = new Pieza((int) (Math.random() * 7 + 1));
+                Pieza aux = new Pieza((int) (8));
                 piezas.add(aux);
 
             }
-
+            System.out.println("FICHA"+ this.piezas.get(0).toString());
             this.ini = 0;
             this.fin = System.currentTimeMillis() + this.timer;
 
@@ -1068,12 +1073,14 @@ public class ActivityClasico extends Activity {
 
         this.reproductor.stop();
 
+
         Intent intent = new Intent(this, ActivityGameOver.class);
         intent.putExtra("puntuacion", this.puntuacion);
         intent.putExtra("modo", this.modoDeJuego);
         intent.putExtra("paleta", this.paletaSeleccionada);
         startActivity(intent);
         finish();
+
     }
 
     public void cambiarEjecucion(View view) {
