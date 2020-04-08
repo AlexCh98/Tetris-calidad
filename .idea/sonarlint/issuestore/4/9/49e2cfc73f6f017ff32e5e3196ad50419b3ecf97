@@ -1,0 +1,64 @@
+
+p
+java:S1450"TRemove the "ayuda" field and declare it as a local variable in the relevant methods.(ŞÄ“A8€Ó¤Ÿ•.
+L
+java:S2140")Use "java.util.Random.nextInt()" instead.(èÈÊ—øÿÿÿÿ8€Ó¤Ÿ•.
+?	java:S131†""Add a default case to this switch.(ÜÚ¹°8€Ó¤Ÿ•.
+o
+java:S1450 "RRemove the "fin" field and declare it as a local variable in the relevant methods.(È”èí8€Ó¤Ÿ•.
+J
+java:S1172è",Remove this unused method parameter "vista".(ü£ûÅ8€Ó¤Ÿ•.
+u
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 66 to the 15 allowed.(¹¤¥ûÿÿÿÿ8€Ó¤Ÿ•.
+C
+java:S1170"!Make this final field static too.(£Éşªúÿÿÿÿ8€Ó¤Ÿ•.
+v
+java:S1450"YRemove the "puntuacion" field and declare it as a local variable in the relevant methods.(±¾¨Ë8€Ó¤Ÿ•.
+J
+java:S1172ø",Remove this unused method parameter "vista".(ÁÂĞê8€Ó¤Ÿ•.
+O
+java:S1172ì",Remove this unused method parameter "vista".(ÇÌø¡úÿÿÿÿ8€Ó¤Ÿ•.
+T
+java:S1128"2Remove this unused import 'android.widget.Button'.(²òıÿÿÿÿ8€Ó¤Ÿ•.
+?	java:S131ò""Add a default case to this switch.(ÜÚ¹°8€Ó¤Ÿ•.
+y
+java:S1450!"\Remove the "contadorFilas" field and declare it as a local variable in the relevant methods.(»ˆÊ8€Ó¤Ÿ•.
+{
+java:S2293@"YReplace the type specification in this constructor call with the diamond operator ("<>").(½è´®úÿÿÿÿ8€Ó¤Ÿ•.
+‰
+java:S2178Ÿ"fCorrect this "|" to "||" and extract the right operand to a variable if it should always be evaluated.(‰Ä÷„úÿÿÿÿ8€Ó¤Ÿ•.
+?	java:S131¾""Add a default case to this switch.(ÜÚ¹°8€Ó¤Ÿ•.
+>	java:S131ã""Add a default case to this switch.(£Ù$8€Ó¤Ÿ•.
+]	java:S1252"<This block of commented-out lines of code should be removed.(õ¯ÜËÿÿÿÿÿ8€Ó¤Ÿ•.
+D	java:S131ÿ""Add a default case to this switch.(Ç¯½Èøÿÿÿÿ8€Ó¤Ÿ•.
+>
+java:S1170""!Make this final field static too.(¿ß¦8€Ó¤Ÿ•.
+X
+java:S2696@"6Make the enclosing method "static" or remove this set.(½è´®úÿÿÿÿ8€Ó¤Ÿ•.
+ˆ
+java:S4165¹"eRemove this useless assignment; "tablero" already holds the assigned value along all execution paths.(øûñÿÿÿÿÿ8€Ó¤Ÿ•.
+F
+java:S1148É"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8€Ó¤Ÿ•.
+o
+java:S1450"RRemove the "ini" field and declare it as a local variable in the relevant methods.(çıæ¸8€Ó¤Ÿ•.
+J
+java:S1172ğ",Remove this unused method parameter "vista".(Áìä•8€Ó¤Ÿ•.
+d
+java:S2142È"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€8€Ó¤Ÿ•.
+J
+java:S1172ˆ",Remove this unused method parameter "vista".(¦İÃ“8€Ó¤Ÿ•.
+?	java:S131Ö""Add a default case to this switch.(ìéÎ•8€Ó¤Ÿ•.
+?	java:S131Î""Add a default case to this switch.(ÜÚ¹°8€Ó¤Ÿ•.
+L
+java:S2140—")Use "java.util.Random.nextInt()" instead.(èÈÊ—øÿÿÿÿ8€Ó¤Ÿ•.
+O
+java:S1172ô",Remove this unused method parameter "vista".(Ä·ÕÒÿÿÿÿÿ8€Ó¤Ÿ•.
+?	java:S131™""Add a default case to this switch.(ÜÚ¹°8€Ó¤Ÿ•.
+F
+java:S2140¸")Use "java.util.Random.nextInt()" instead.(ÿÕè8€Ó¤Ÿ•.
+?	java:S131â""Add a default case to this switch.(ÜÚ¹°8€Ó¤Ÿ•.
+k
+java:S1192›"HDefine a constant instead of duplicating this literal "#AEB7B6" 7 times.(óãÍúÿÿÿÿ8€Ó¤Ÿ•.
+x
+java:S3008"VRename this field "ListaCeldas" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’ú˜Çûÿÿÿÿ8€Ó¤Ÿ•.
+?	java:S131ª""Add a default case to this switch.(ÜÚ¹°8€Ó¤Ÿ•.

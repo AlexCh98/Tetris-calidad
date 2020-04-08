@@ -2,7 +2,7 @@ package com.example.tetris;
 
 import java.util.Arrays;
 
-public class Pieza implements Cloneable{
+public class Pieza implements Cloneable {
     private int[][] matrizCoords;
     private int color;
     private boolean rota;
@@ -12,8 +12,8 @@ public class Pieza implements Cloneable{
     private final int posicionY = 1;
     private final int posicionBitImportante = 0;
 
-    public Pieza(int tipo){
-        switch (tipo){
+    public Pieza(int tipo) {
+        switch (tipo) {
             case 0:
                 this.crearPieza0();
                 break;
@@ -42,59 +42,59 @@ public class Pieza implements Cloneable{
         }
     }
 
-    private void crearPieza0(){
-        this.color=0;
+    private void crearPieza0() {
+        this.color = 0;
         this.matrizCoords = new int[4][2];
         this.rota = false;
     }
 
     private void crearPieza1(int color) {
         this.color = color;
-        this.matrizCoords = new int[][]{{3,4},{3, 3}, {3, 5}, {3, 6}};
+        this.matrizCoords = new int[][]{{3, 4}, {3, 3}, {3, 5}, {3, 6}};
         this.rota = true;
     }
 
     private void crearPieza2(int color) {
         this.color = color;
-        this.matrizCoords = new int[][]{{3,4}, {3,3},{3,5},{2,4}};
+        this.matrizCoords = new int[][]{{3, 4}, {3, 3}, {3, 5}, {2, 4}};
         this.rota = true;
     }
 
     private void crearPieza3(int color) {
         this.color = color;
-        this.matrizCoords = new int[][]{{3,4}, {3,3},{3,5},{2,3}};
+        this.matrizCoords = new int[][]{{3, 4}, {3, 3}, {3, 5}, {2, 3}};
         this.rota = true;
     }
 
     private void crearPieza4(int color) {
         this.color = color;
-        this.matrizCoords = new int[][]{{3,4}, {3,3},{3,5},{2,5}};
+        this.matrizCoords = new int[][]{{3, 4}, {3, 3}, {3, 5}, {2, 5}};
         this.rota = true;
     }
 
     private void crearPieza5(int color) {
         this.color = color;
-        this.matrizCoords = new int[][]{{3,4},{3,5},{2,4},{2,5}};
+        this.matrizCoords = new int[][]{{3, 4}, {3, 5}, {2, 4}, {2, 5}};
         this.rota = false;
     }
 
     private void crearPieza6(int color) {
         this.color = color;
-        this.matrizCoords = new int[][]{{3,4}, {3,3},{2,4},{2,5}};
+        this.matrizCoords = new int[][]{{3, 4}, {3, 3}, {2, 4}, {2, 5}};
         this.rota = true;
     }
 
     private void crearPieza8(int color) {
         this.color = color;
-        this.matrizCoords = new int[][]{{3,4},{3, 3}, {3, 5}};
+        this.matrizCoords = new int[][]{{3, 4}, {3, 3}, {3, 5}};
         this.rota = true;
     }
 
-    public int[][] getCoords(){
+    public int[][] getCoords() {
         return this.matrizCoords;
     }
 
-    public int getColor(){
+    public int getColor() {
         return this.color;
     }
 
@@ -112,34 +112,33 @@ public class Pieza implements Cloneable{
                 '}';
     }
 
-    private boolean[][] convertirAMatriz(){
+    private boolean[][] convertirAMatriz() {
         boolean[][] matrizAux1 = new boolean[5][5];
 
         int auxX = this.matrizCoords[this.posicionBitImportante][this.posicionX] - this.centroMatrizX;
         int auxY = this.matrizCoords[this.posicionBitImportante][this.posicionY] - this.centroMatrizY;
 
-        for(int i=0;i<this.matrizCoords.length;i++){
+        for (int i = 0; i < this.matrizCoords.length; i++) {
             matrizAux1[this.matrizCoords[i][this.posicionX] - auxX][this.matrizCoords[i][this.posicionY] - auxY] = true;
         }
 
         return matrizAux1;
     }
 
-    private int[][] convertirAPieza(boolean[][] matrizAux2){
+    private int[][] convertirAPieza(boolean[][] matrizAux2) {
         int[][] matrizCoordsAux = new int[4][2];
 
         int auxX = this.matrizCoords[this.posicionBitImportante][this.posicionX] - this.centroMatrizX;
         int auxY = this.matrizCoords[this.posicionBitImportante][this.posicionY] - this.centroMatrizY;
         int k = 1;
 
-        for(int i=0;i<matrizAux2.length;i++){
-            for(int j=0;j<matrizAux2.length;j++){
-                if(matrizAux2[i][j]){
-                    if(i == this.centroMatrizX && j == this.centroMatrizY){
+        for (int i = 0; i < matrizAux2.length; i++) {
+            for (int j = 0; j < matrizAux2.length; j++) {
+                if (matrizAux2[i][j]) {
+                    if (i == this.centroMatrizX && j == this.centroMatrizY) {
                         matrizCoordsAux[0][this.posicionX] = this.matrizCoords[0][this.posicionX];
                         matrizCoordsAux[0][this.posicionY] = this.matrizCoords[0][this.posicionY];
-                    }
-                    else{
+                    } else {
                         matrizCoordsAux[k][this.posicionX] = auxX + i;
                         matrizCoordsAux[k][this.posicionY] = auxY + j;
 
@@ -152,13 +151,13 @@ public class Pieza implements Cloneable{
         return matrizCoordsAux;
     }
 
-    public void rotarIzq(){
-        if(this.rota){
+    public void rotarIzq() {
+        if (this.rota) {
             boolean[][] matrizAux1 = this.convertirAMatriz();
             boolean[][] matrizAxu2 = new boolean[5][5];
 
-            for(int i=0;i<matrizAux1.length;i++){
-                for(int j=0;j<matrizAux1.length;j++){
+            for (int i = 0; i < matrizAux1.length; i++) {
+                for (int j = 0; j < matrizAux1.length; j++) {
                     matrizAxu2[i][j] = matrizAux1[j][i];
                 }
             }
@@ -168,13 +167,13 @@ public class Pieza implements Cloneable{
     }
 
 
-    public void rotarDer(){
-        if(this.rota){
+    public void rotarDer() {
+        if (this.rota) {
             boolean[][] matrizAux1 = this.convertirAMatriz();
             boolean[][] matrizAxu2 = new boolean[5][5];
 
-            for(int i=0;i<matrizAux1.length;i++){
-                for(int j=0;j<matrizAux1.length;j++){
+            for (int i = 0; i < matrizAux1.length; i++) {
+                for (int j = 0; j < matrizAux1.length; j++) {
                     matrizAxu2[i][(matrizAux1.length - 1) - j] = matrizAux1[j][i];
                 }
             }
@@ -184,31 +183,31 @@ public class Pieza implements Cloneable{
     }
 
 
-    public void desplazarIzq(){
-        for(int i=0;i<this.matrizCoords.length;i++){
+    public void desplazarIzq() {
+        for (int i = 0; i < this.matrizCoords.length; i++) {
             this.matrizCoords[i][this.posicionY]--;
         }
     }
 
 
-    public void desplazarDer(){
-        for(int i=0;i<this.matrizCoords.length;i++){
+    public void desplazarDer() {
+        for (int i = 0; i < this.matrizCoords.length; i++) {
             this.matrizCoords[i][this.posicionY]++;
         }
     }
 
 
-    public void desplazarAbajo(){
-        for(int i=0;i<this.matrizCoords.length;i++){
+    public void desplazarAbajo() {
+        for (int i = 0; i < this.matrizCoords.length; i++) {
             this.matrizCoords[i][this.posicionX]++;
         }
     }
 
     @Override
-    public Pieza clone(){
+    public Pieza clone() {
         Pieza clon = new Pieza(0);
 
-        for(int i=0;i<this.matrizCoords.length;i++){
+        for (int i = 0; i < this.matrizCoords.length; i++) {
             clon.matrizCoords[i][0] = this.matrizCoords[i][0];
             clon.matrizCoords[i][1] = this.matrizCoords[i][1];
         }
@@ -217,5 +216,15 @@ public class Pieza implements Cloneable{
         clon.rota = this.rota;
 
         return clon;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Pieza)) return false;
+
+        Pieza pieza = (Pieza) o;
+
+        return Arrays.deepEquals(matrizCoords, pieza.matrizCoords);
     }
 }
