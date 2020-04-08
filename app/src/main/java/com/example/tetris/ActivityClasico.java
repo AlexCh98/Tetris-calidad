@@ -647,7 +647,17 @@ public class ActivityClasico extends Activity {
         ImageButton musicButton = findViewById(R.id.musicButton);
         this.reproductor.stop();
         musicButton.setEnabled(false);
+    }
 
+    public boolean estaMusicaReproduciendo(){
+        return this.reproductor.isPlaying();
+    }
+    public void cambiarColor(View vista){
+        ImageButton changeColor = findViewById(R.id.changeColorButton);
+        this.tablero.cambiarColorTablero();
+    }
+    public boolean todasRosas(){
+        return this.tablero.sonTodasRosas();
     }
 
     int cont = 0;
