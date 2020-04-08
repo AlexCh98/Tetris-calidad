@@ -101,4 +101,22 @@ public class Tablero {
         }
 
     }
+
+    public void cambiarColorTablero(){
+        for(int i = 0; i < this.matrizTablero.length; i++){
+            for(int j=0; j<this.matrizTablero[0].length; j++) {
+                if (this.matrizTablero[i][j] != 0){
+                    this.matrizTablero[i][j] = 2;
+                }
+            }
+        }
+    }
+    public boolean sonTodasRosas(){
+        for(int i =0; i <this.matrizTablero[0].length; i++){
+            if(this.matrizTablero[matrizTablero.length-1][i] != 0 && this.matrizTablero[matrizTablero.length-1][i] != 2){
+                return false;
+            }
+        }
+        return true;
+    }
 }

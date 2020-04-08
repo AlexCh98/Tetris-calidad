@@ -31,6 +31,14 @@ tools:context=".ActivityClasico"
             android:src="@drawable/start"
             android:text="@string/start" />
 
+        <Button
+            android:id="@+id/PauseButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="cambiarEjecucion"
+            android:text="Pause" />
+
         <ImageButton
             android:id="@+id/musicButton"
             android:layout_width="match_parent"
@@ -40,6 +48,17 @@ tools:context=".ActivityClasico"
             android:background="#00FFFFFF"
             android:onClick="pausarMusica"
             android:src="@android:drawable/ic_lock_silent_mode"
+            android:text="@string/start" />
+
+        <ImageButton
+            android:id="@+id/changeColorButton"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:background="#00FFFFFF"
+            android:onClick="cambiarColor"
+            android:src="@android:drawable/ic_menu_edit"
             android:text="@string/start" />
 
         <ImageView
