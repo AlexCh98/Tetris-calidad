@@ -32,6 +32,8 @@ public class ActivityClasico extends Activity {
     private long ini;
     private long fin;
 
+    private  MediaPlayer reproductor;
+
     private final int nPiezasEnElArray = 2;
     List<Integer> listaMovimientos;
     List<Pieza> piezas;
@@ -641,6 +643,12 @@ public class ActivityClasico extends Activity {
 
         iniciarChingada();
     }
+    public void pausarMusica(View vista){
+        ImageButton musicButton = findViewById(R.id.musicButton);
+        this.reproductor.stop();
+        musicButton.setEnabled(false);
+
+    }
 
     int cont = 0;
     public void executea() {
@@ -660,9 +668,9 @@ public class ActivityClasico extends Activity {
         Pieza pieza = new Pieza((int) (Math.random() * 7 + 1));
         piezas.add(pieza);
 
-        MediaPlayer reproductor = MediaPlayer.create(this, R.raw.mix);
-        reproductor.start();
-        reproductor.setLooping(true);
+        this.reproductor = MediaPlayer.create(this, R.raw.mix);
+        this.reproductor.start();
+        this.reproductor.setLooping(true);
 
         do {
 
@@ -1035,7 +1043,7 @@ public class ActivityClasico extends Activity {
 
         } while (this.comprobarInferiores(piezaActual, tablero, reglas) | !reglas.gameOver(piezaActual, tablero.getMatrizTablero()));
 
-        reproductor.stop();
+        this.reproductor.stop();
 
         Intent intent = new Intent(this, ActivityGameOver.class);
         intent.putExtra("puntuacion",this.puntuacion);
