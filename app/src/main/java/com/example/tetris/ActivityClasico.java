@@ -18,6 +18,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class ActivityClasico extends Activity {
     private static ArrayList<ImageView> ListaCeldas;
@@ -36,6 +37,11 @@ public class ActivityClasico extends Activity {
     private final int nPiezasEnElArray = 2;
     List<Integer> listaMovimientos;
     List<Pieza> piezas;
+
+    public boolean isMovementDone() {
+        return movementDone;
+    }
+
     Tablero tablero;
     Reglas reglas;
     Handler handler = new Handler();
@@ -47,6 +53,8 @@ public class ActivityClasico extends Activity {
     private boolean pause = false;
 
     int paletaSeleccionada;
+
+    private boolean movementDone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -488,6 +496,7 @@ public class ActivityClasico extends Activity {
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j21);
         ListaCeldas.add(ayuda);
+        movementDone = true;
     }
 
 
@@ -507,11 +516,23 @@ public class ActivityClasico extends Activity {
         this.listaMovimientos.add(3);
     }
 
-    public void bajaRapido(View vista) {
+
+
+
+    public void generaMovimientoAleatorio(View vista){
+        int numeroAleatorio = (int)Math.floor(Math.random()*5);  // Valor entre 0 y 4, ambos incluidos.
+        this.listaMovimientos.add(numeroAleatorio);
+
+    }
+
+
+    public void bajaRapido(View vista){
         this.listaMovimientos.add(4);
+
     }
 
     private Tablero borrarPieza(Pieza pieza, Tablero tablero) {
+
 
         tablero.actualizarTablero(pieza.getCoords(), 0);
 
@@ -625,7 +646,7 @@ public class ActivityClasico extends Activity {
                     }
                     break;
             }
-            this.listaMovimientos.clear();
+            this.listaMovimientos.remove(0);
         }
 
         return tablero;
