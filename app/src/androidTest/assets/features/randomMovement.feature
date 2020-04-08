@@ -1,11 +1,11 @@
-Feature: Music
-    A new button for pause the music
+Feature: Random_Movement
+    A new button for do a random movement
 
-    @music-feature
-    Scenario Outline: A new button for pause the music
+    @randomMovement-feature
+    Scenario Outline: A new button for do a random movement
         Given I am on activity screen
         When I press the button
-        Then The music stops
+        Then Do random movement
 
     Examples:
         | email | password  | view  |
