@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class ActivityClasico extends Activity {
     private long ini;
     private long fin;
 
-    private  MediaPlayer reproductor;
+    private MediaPlayer reproductor;
 
     private final int nPiezasEnElArray = 2;
     List<Integer> listaMovimientos;
@@ -40,6 +39,12 @@ public class ActivityClasico extends Activity {
     Tablero tablero;
     Reglas reglas;
     Handler handler = new Handler();
+
+    public boolean isPause() {
+        return !pause;
+    }
+
+    private boolean pause = false;
 
     int paletaSeleccionada;
 
@@ -61,424 +66,424 @@ public class ActivityClasico extends Activity {
         this.reglas = new Reglas();
         Intent intent = getIntent();
         this.modoDeJuego = intent.getStringExtra("modo");
-        this.paletaSeleccionada = intent.getIntExtra("paleta",0);
+        this.paletaSeleccionada = intent.getIntExtra("paleta", 0);
 
         ListaCeldas = new ArrayList<ImageView>(200);
-        ayuda =  findViewById(R.id.a1);
+        ayuda = findViewById(R.id.a1);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b1);
+        ayuda = findViewById(R.id.b1);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c1);
+        ayuda = findViewById(R.id.c1);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d1);
+        ayuda = findViewById(R.id.d1);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e1);
+        ayuda = findViewById(R.id.e1);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f1);
+        ayuda = findViewById(R.id.f1);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g1);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h1);
+        ayuda = findViewById(R.id.h1);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i1);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j1);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a2);
+        ayuda = findViewById(R.id.a2);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b2);
+        ayuda = findViewById(R.id.b2);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c2);
+        ayuda = findViewById(R.id.c2);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d2);
+        ayuda = findViewById(R.id.d2);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e2);
+        ayuda = findViewById(R.id.e2);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f2);
+        ayuda = findViewById(R.id.f2);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g2);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h2);
+        ayuda = findViewById(R.id.h2);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i2);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j2);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a3);
+        ayuda = findViewById(R.id.a3);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b3);
+        ayuda = findViewById(R.id.b3);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c3);
+        ayuda = findViewById(R.id.c3);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d3);
+        ayuda = findViewById(R.id.d3);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e3);
+        ayuda = findViewById(R.id.e3);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f3);
+        ayuda = findViewById(R.id.f3);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g3);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h3);
+        ayuda = findViewById(R.id.h3);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i3);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j3);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a4);
+        ayuda = findViewById(R.id.a4);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b4);
+        ayuda = findViewById(R.id.b4);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c4);
+        ayuda = findViewById(R.id.c4);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d4);
+        ayuda = findViewById(R.id.d4);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e4);
+        ayuda = findViewById(R.id.e4);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f4);
+        ayuda = findViewById(R.id.f4);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g4);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h4);
+        ayuda = findViewById(R.id.h4);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i4);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j4);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a5);
+        ayuda = findViewById(R.id.a5);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b5);
+        ayuda = findViewById(R.id.b5);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c5);
+        ayuda = findViewById(R.id.c5);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d5);
+        ayuda = findViewById(R.id.d5);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e5);
+        ayuda = findViewById(R.id.e5);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f5);
+        ayuda = findViewById(R.id.f5);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g5);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h5);
+        ayuda = findViewById(R.id.h5);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i5);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j5);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a6);
+        ayuda = findViewById(R.id.a6);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b6);
+        ayuda = findViewById(R.id.b6);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c6);
+        ayuda = findViewById(R.id.c6);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d6);
+        ayuda = findViewById(R.id.d6);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e6);
+        ayuda = findViewById(R.id.e6);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f6);
+        ayuda = findViewById(R.id.f6);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g6);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h6);
+        ayuda = findViewById(R.id.h6);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i6);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j6);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a7);
+        ayuda = findViewById(R.id.a7);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b7);
+        ayuda = findViewById(R.id.b7);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c7);
+        ayuda = findViewById(R.id.c7);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d7);
+        ayuda = findViewById(R.id.d7);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e7);
+        ayuda = findViewById(R.id.e7);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f7);
+        ayuda = findViewById(R.id.f7);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g7);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h7);
+        ayuda = findViewById(R.id.h7);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i7);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j7);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a8);
+        ayuda = findViewById(R.id.a8);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b8);
+        ayuda = findViewById(R.id.b8);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c8);
+        ayuda = findViewById(R.id.c8);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d8);
+        ayuda = findViewById(R.id.d8);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e8);
+        ayuda = findViewById(R.id.e8);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f8);
+        ayuda = findViewById(R.id.f8);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g8);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h8);
+        ayuda = findViewById(R.id.h8);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i8);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j8);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a9);
+        ayuda = findViewById(R.id.a9);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b9);
+        ayuda = findViewById(R.id.b9);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c9);
+        ayuda = findViewById(R.id.c9);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d9);
+        ayuda = findViewById(R.id.d9);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e9);
+        ayuda = findViewById(R.id.e9);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f9);
+        ayuda = findViewById(R.id.f9);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g9);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h9);
+        ayuda = findViewById(R.id.h9);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i9);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j9);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a10);
+        ayuda = findViewById(R.id.a10);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b10);
+        ayuda = findViewById(R.id.b10);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c10);
+        ayuda = findViewById(R.id.c10);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d10);
+        ayuda = findViewById(R.id.d10);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e10);
+        ayuda = findViewById(R.id.e10);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f10);
+        ayuda = findViewById(R.id.f10);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g10);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h10);
+        ayuda = findViewById(R.id.h10);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i10);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j10);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a11);
+        ayuda = findViewById(R.id.a11);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b11);
+        ayuda = findViewById(R.id.b11);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c11);
+        ayuda = findViewById(R.id.c11);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d11);
+        ayuda = findViewById(R.id.d11);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e11);
+        ayuda = findViewById(R.id.e11);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f11);
+        ayuda = findViewById(R.id.f11);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g11);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h11);
+        ayuda = findViewById(R.id.h11);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i11);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j11);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a12);
+        ayuda = findViewById(R.id.a12);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b12);
+        ayuda = findViewById(R.id.b12);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c12);
+        ayuda = findViewById(R.id.c12);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d12);
+        ayuda = findViewById(R.id.d12);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e12);
+        ayuda = findViewById(R.id.e12);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f12);
+        ayuda = findViewById(R.id.f12);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g12);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h12);
+        ayuda = findViewById(R.id.h12);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i12);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j12);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a13);
+        ayuda = findViewById(R.id.a13);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b13);
+        ayuda = findViewById(R.id.b13);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c13);
+        ayuda = findViewById(R.id.c13);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d13);
+        ayuda = findViewById(R.id.d13);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e13);
+        ayuda = findViewById(R.id.e13);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f13);
+        ayuda = findViewById(R.id.f13);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g13);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h13);
+        ayuda = findViewById(R.id.h13);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i13);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j13);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a14);
+        ayuda = findViewById(R.id.a14);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b14);
+        ayuda = findViewById(R.id.b14);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c14);
+        ayuda = findViewById(R.id.c14);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d14);
+        ayuda = findViewById(R.id.d14);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e14);
+        ayuda = findViewById(R.id.e14);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f14);
+        ayuda = findViewById(R.id.f14);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g14);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h14);
+        ayuda = findViewById(R.id.h14);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i14);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j14);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a15);
+        ayuda = findViewById(R.id.a15);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b15);
+        ayuda = findViewById(R.id.b15);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c15);
+        ayuda = findViewById(R.id.c15);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d15);
+        ayuda = findViewById(R.id.d15);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e15);
+        ayuda = findViewById(R.id.e15);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f15);
+        ayuda = findViewById(R.id.f15);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g15);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h15);
+        ayuda = findViewById(R.id.h15);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i15);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j15);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a16);
+        ayuda = findViewById(R.id.a16);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b16);
+        ayuda = findViewById(R.id.b16);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c16);
+        ayuda = findViewById(R.id.c16);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d16);
+        ayuda = findViewById(R.id.d16);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e16);
+        ayuda = findViewById(R.id.e16);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f16);
+        ayuda = findViewById(R.id.f16);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g16);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h16);
+        ayuda = findViewById(R.id.h16);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i16);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j16);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a17);
+        ayuda = findViewById(R.id.a17);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b17);
+        ayuda = findViewById(R.id.b17);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c17);
+        ayuda = findViewById(R.id.c17);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d17);
+        ayuda = findViewById(R.id.d17);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e17);
+        ayuda = findViewById(R.id.e17);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f17);
+        ayuda = findViewById(R.id.f17);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g17);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h17);
+        ayuda = findViewById(R.id.h17);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i17);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j17);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a18);
+        ayuda = findViewById(R.id.a18);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b18);
+        ayuda = findViewById(R.id.b18);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c18);
+        ayuda = findViewById(R.id.c18);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d18);
+        ayuda = findViewById(R.id.d18);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e18);
+        ayuda = findViewById(R.id.e18);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f18);
+        ayuda = findViewById(R.id.f18);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g18);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h18);
+        ayuda = findViewById(R.id.h18);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i18);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j18);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a19);
+        ayuda = findViewById(R.id.a19);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b19);
+        ayuda = findViewById(R.id.b19);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c19);
+        ayuda = findViewById(R.id.c19);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d19);
+        ayuda = findViewById(R.id.d19);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e19);
+        ayuda = findViewById(R.id.e19);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f19);
+        ayuda = findViewById(R.id.f19);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g19);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h19);
+        ayuda = findViewById(R.id.h19);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i19);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j19);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a20);
+        ayuda = findViewById(R.id.a20);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b20);
+        ayuda = findViewById(R.id.b20);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c20);
+        ayuda = findViewById(R.id.c20);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d20);
+        ayuda = findViewById(R.id.d20);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e20);
+        ayuda = findViewById(R.id.e20);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f20);
+        ayuda = findViewById(R.id.f20);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g20);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h20);
+        ayuda = findViewById(R.id.h20);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i20);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j20);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.a21);
+        ayuda = findViewById(R.id.a21);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.b21);
+        ayuda = findViewById(R.id.b21);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.c21);
+        ayuda = findViewById(R.id.c21);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.d21);
+        ayuda = findViewById(R.id.d21);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.e21);
+        ayuda = findViewById(R.id.e21);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.f21);
+        ayuda = findViewById(R.id.f21);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.g21);
         ListaCeldas.add(ayuda);
-        ayuda =  findViewById(R.id.h21);
+        ayuda = findViewById(R.id.h21);
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.i21);
         ListaCeldas.add(ayuda);
@@ -487,98 +492,98 @@ public class ActivityClasico extends Activity {
     }
 
 
-    public void desplazaIzq(View vista){
+    public void desplazaIzq(View vista) {
         this.listaMovimientos.add(0);
     }
 
-    public void desplazaDer(View vista){
+    public void desplazaDer(View vista) {
         this.listaMovimientos.add(1);
     }
 
-    public void rotaIzq(View vista){
+    public void rotaIzq(View vista) {
         this.listaMovimientos.add(2);
     }
 
-    public void rotaDer(View vista){
+    public void rotaDer(View vista) {
         this.listaMovimientos.add(3);
     }
 
-    public void bajaRapido(View vista){
+    public void bajaRapido(View vista) {
         this.listaMovimientos.add(4);
     }
 
-    private Tablero borrarPieza(Pieza pieza, Tablero tablero){
+    private Tablero borrarPieza(Pieza pieza, Tablero tablero) {
 
-        tablero.actualizarTablero(pieza.getCoords(),0);
+        tablero.actualizarTablero(pieza.getCoords(), 0);
 
         return tablero;
     }
 
-    public Tablero hacerDesplazamiento(Pieza pieza, Tablero tablero, Reglas regla, int opcion){
+    public Tablero hacerDesplazamiento(Pieza pieza, Tablero tablero, Reglas regla, int opcion) {
         tablero.actualizarTablero(pieza.getCoords(), 0);
         Pieza piezaAux = pieza.clone();
 
-        if(opcion == 0){
+        if (opcion == 0) {
             piezaAux.desplazarIzq();
-        }else if(opcion == 1){
+        } else if (opcion == 1) {
             piezaAux.desplazarDer();
         }
 
-        if(regla.permisoDesplazamiento(piezaAux.getCoords(), tablero.getMatrizTablero())){
-            tablero.actualizarTablero(piezaAux.getCoords(),piezaAux.getColor());
-            if(opcion == 0){
+        if (regla.permisoDesplazamiento(piezaAux.getCoords(), tablero.getMatrizTablero())) {
+            tablero.actualizarTablero(piezaAux.getCoords(), piezaAux.getColor());
+            if (opcion == 0) {
                 pieza.desplazarIzq();
-            }else if(opcion == 1){
+            } else if (opcion == 1) {
                 pieza.desplazarDer();
             }
-        }else{
+        } else {
             tablero.actualizarTablero(pieza.getCoords(), pieza.getColor());
         }
 
         return tablero;
     }
 
-    public Tablero hacerRotaciones(Pieza pieza, Tablero tablero, Reglas regla, int opcion){
+    public Tablero hacerRotaciones(Pieza pieza, Tablero tablero, Reglas regla, int opcion) {
         Pieza piezaAux = pieza.clone();
         tablero.actualizarTablero(piezaAux.getCoords(), 0);
 
-        if(opcion == 0){
+        if (opcion == 0) {
             piezaAux.rotarIzq();
-        }else{
+        } else {
             piezaAux.rotarDer();
         }
 
-        if(!regla.superaTopeInferior(piezaAux.getCoords()) && regla.permisoDesplazamiento(piezaAux.getCoords(), tablero.getMatrizTablero())){
+        if (!regla.superaTopeInferior(piezaAux.getCoords()) && regla.permisoDesplazamiento(piezaAux.getCoords(), tablero.getMatrizTablero())) {
             tablero.actualizarTablero(piezaAux.getCoords(), piezaAux.getColor());
 
-            if(opcion == 0){
+            if (opcion == 0) {
                 pieza.rotarIzq();
-            }else{
+            } else {
                 pieza.rotarDer();
             }
-        }else{
+        } else {
             tablero.actualizarTablero(pieza.getCoords(), pieza.getColor());
         }
 
         return tablero;
     }
 
-    public Tablero bajarPieza(Pieza pieza, Tablero tablero, Reglas reglas){
+    public Tablero bajarPieza(Pieza pieza, Tablero tablero, Reglas reglas) {
         tablero = this.borrarPieza(pieza, tablero);
         Pieza piezaAux = pieza.clone();
 
         pieza.desplazarAbajo();
 
-        if(!reglas.superaTopeInferior(pieza.getCoords()) && reglas.permisoDesplazamientoInferior(pieza.getCoords(), tablero.getMatrizTablero())){
+        if (!reglas.superaTopeInferior(pieza.getCoords()) && reglas.permisoDesplazamientoInferior(pieza.getCoords(), tablero.getMatrizTablero())) {
             tablero.actualizarTablero(pieza.getCoords(), pieza.getColor());
-        }else{
+        } else {
             tablero.actualizarTablero(piezaAux.getCoords(), pieza.getColor());
         }
 
         return tablero;
     }
 
-    public boolean comprobarInferiores(Pieza pieza, Tablero tablero, Reglas reglas){
+    public boolean comprobarInferiores(Pieza pieza, Tablero tablero, Reglas reglas) {
         boolean permiso = true;
 
         Pieza piezaAux = pieza.clone();
@@ -587,9 +592,9 @@ public class ActivityClasico extends Activity {
 
         piezaAux.desplazarAbajo();
 
-        if(!reglas.superaTopeInferior(piezaAux.getCoords()) && reglas.permisoDesplazamientoInferior(piezaAux.getCoords(), tablero.getMatrizTablero())){
+        if (!reglas.superaTopeInferior(piezaAux.getCoords()) && reglas.permisoDesplazamientoInferior(piezaAux.getCoords(), tablero.getMatrizTablero())) {
             permiso = true;
-        }else{
+        } else {
             permiso = false;
         }
 
@@ -598,25 +603,25 @@ public class ActivityClasico extends Activity {
         return permiso;
     }
 
-    private Tablero seleccionarMovimiento(Pieza piezaActual, Tablero tablero, Reglas reglas){
+    private Tablero seleccionarMovimiento(Pieza piezaActual, Tablero tablero, Reglas reglas) {
 
-        if(!listaMovimientos.isEmpty()){
+        if (!listaMovimientos.isEmpty()) {
             int movimiento = listaMovimientos.get(0);
-            switch (movimiento){
+            switch (movimiento) {
                 case 0:
-                    tablero = this.hacerDesplazamiento(piezaActual,tablero,reglas,0);
+                    tablero = this.hacerDesplazamiento(piezaActual, tablero, reglas, 0);
                     break;
                 case 1:
-                    tablero = this.hacerDesplazamiento(piezaActual,tablero,reglas,1);
+                    tablero = this.hacerDesplazamiento(piezaActual, tablero, reglas, 1);
                     break;
                 case 2:
-                    tablero = this.hacerRotaciones(piezaActual,tablero,reglas,0);
+                    tablero = this.hacerRotaciones(piezaActual, tablero, reglas, 0);
                     break;
                 case 3:
-                    tablero = this.hacerRotaciones(piezaActual,tablero,reglas,1);
+                    tablero = this.hacerRotaciones(piezaActual, tablero, reglas, 1);
                     break;
                 case 4:
-                    if(comprobarInferiores(piezaActual, tablero, reglas)) {
+                    if (comprobarInferiores(piezaActual, tablero, reglas)) {
                         tablero = this.bajarPieza(piezaActual, tablero, reglas);
                     }
                     break;
@@ -627,7 +632,7 @@ public class ActivityClasico extends Activity {
         return tablero;
     }
 
-    public void iniciarChingada(){
+    public void iniciarChingada() {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
@@ -637,13 +642,14 @@ public class ActivityClasico extends Activity {
         new Thread(runnable).start();
     }
 
-    public void iniciar(View vista){
+    public void iniciar(View vista) {
         ImageButton botonStart = findViewById(R.id.button1);
         botonStart.setEnabled(false);
 
         iniciarChingada();
     }
-    public void pausarMusica(View vista){
+
+    public void pausarMusica(View vista) {
         ImageButton musicButton = findViewById(R.id.musicButton);
         this.reproductor.stop();
         musicButton.setEnabled(false);
@@ -661,6 +667,7 @@ public class ActivityClasico extends Activity {
     }
 
     int cont = 0;
+
     public void executea() {
 
         this.puntuacion = 0;
@@ -685,9 +692,9 @@ public class ActivityClasico extends Activity {
         do {
 
             if (!comprobarInferiores(piezaActual, tablero, reglas)) {
-                while(reglas.filaCompleta(this.tablero.getMatrizTablero(), tablero)){
+                while (reglas.filaCompleta(this.tablero.getMatrizTablero(), tablero)) {
                     this.puntuacion += 30;
-                    muestraPuntos.setText(this.puntuacion+"");
+                    muestraPuntos.setText(this.puntuacion + "");
                 }
                 piezaActual = piezas.get(0);
                 piezas.remove(0);
@@ -706,6 +713,9 @@ public class ActivityClasico extends Activity {
                 tablero = this.seleccionarMovimiento(piezaActual, tablero, reglas);
 
                 try {
+                    while (pause){
+                        Thread.sleep(10);
+                    }
                     Thread.sleep(16);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -718,10 +728,10 @@ public class ActivityClasico extends Activity {
                         this.cambiarSiguiente(piezas.get(0).getColor());
                     }
 
-                    private void cambiarSiguiente(int pieza){
+                    private void cambiarSiguiente(int pieza) {
 
                         ImageView aux = (ImageView) findViewById(R.id.siguientePieza);
-                        switch(pieza){
+                        switch (pieza) {
                             case 1:
                                 aux.setImageResource(R.drawable.piezai);
                                 break;
@@ -750,30 +760,30 @@ public class ActivityClasico extends Activity {
                     public void actualizarTablero(int[][] matrizTablero) {
                         int index = 0;
 
-                        for (int i = 4; i<=23; i++){
-                            for (int j=0;j<=9;j++){
-                                ImageView auxiliar  = (ImageView) ListaCeldas.get(index);
-                                cambiarColor(matrizTablero[i][j],auxiliar,paletaSeleccionada);
-                                index ++;
+                        for (int i = 4; i <= 23; i++) {
+                            for (int j = 0; j <= 9; j++) {
+                                ImageView auxiliar = (ImageView) ListaCeldas.get(index);
+                                cambiarColor(matrizTablero[i][j], auxiliar, paletaSeleccionada);
+                                index++;
                             }
                         }
 
                     }
 
-                    public void cambiarColor(int color, ImageView vista, int paletaSeleccion){
+                    public void cambiarColor(int color, ImageView vista, int paletaSeleccion) {
 
-                        switch(paletaSeleccion){
+                        switch (paletaSeleccion) {
                             case 0:
-                                auxCCOriginal(color,vista);
+                                auxCCOriginal(color, vista);
                                 break;
                             case 1:
-                                auxCCRojo(color,vista);
+                                auxCCRojo(color, vista);
                                 break;
                             case 2:
-                                auxCCAzul(color,vista);
+                                auxCCAzul(color, vista);
                                 break;
                             case 3:
-                                auxCCVerde(color,vista);
+                                auxCCVerde(color, vista);
                                 break;
                             case 4:
                                 auxCCAmarillo(color, vista);
@@ -782,13 +792,13 @@ public class ActivityClasico extends Activity {
                                 auxCCNaranja(color, vista);
                                 break;
                             case 6:
-                                auxCCMarron(color,vista);
+                                auxCCMarron(color, vista);
                                 break;
                         }
                     }
 
-                    private  void auxCCOriginal(int color, ImageView vista){
-                        switch(color) {
+                    private void auxCCOriginal(int color, ImageView vista) {
+                        switch (color) {
                             case 0:
                                 vista.setBackgroundColor(Color.parseColor("#AEB7B6"));
                                 vista.setImageResource(R.drawable.cuadrado);
@@ -824,8 +834,8 @@ public class ActivityClasico extends Activity {
                         }
                     }
 
-                    private  void auxCCRojo(int color, ImageView vista){
-                        switch(color) {
+                    private void auxCCRojo(int color, ImageView vista) {
+                        switch (color) {
                             case 0:
                                 vista.setBackgroundColor(Color.parseColor("#AEB7B6"));
                                 vista.setImageResource(R.drawable.cuadrado);
@@ -860,8 +870,9 @@ public class ActivityClasico extends Activity {
                                 break;
                         }
                     }
-                    private  void auxCCAzul(int color, ImageView vista){
-                        switch(color) {
+
+                    private void auxCCAzul(int color, ImageView vista) {
+                        switch (color) {
                             case 0:
                                 vista.setBackgroundColor(Color.parseColor("#AEB7B6"));
                                 vista.setImageResource(R.drawable.cuadrado);
@@ -896,8 +907,9 @@ public class ActivityClasico extends Activity {
                                 break;
                         }
                     }
-                    private  void auxCCVerde(int color, ImageView vista){
-                        switch(color) {
+
+                    private void auxCCVerde(int color, ImageView vista) {
+                        switch (color) {
                             case 0:
                                 vista.setBackgroundColor(Color.parseColor("#AEB7B6"));
                                 vista.setImageResource(R.drawable.cuadrado);
@@ -932,8 +944,9 @@ public class ActivityClasico extends Activity {
                                 break;
                         }
                     }
-                    private  void auxCCAmarillo(int color, ImageView vista){
-                        switch(color) {
+
+                    private void auxCCAmarillo(int color, ImageView vista) {
+                        switch (color) {
                             case 0:
                                 vista.setBackgroundColor(Color.parseColor("#AEB7B6"));
                                 vista.setImageResource(R.drawable.cuadrado);
@@ -968,8 +981,9 @@ public class ActivityClasico extends Activity {
                                 break;
                         }
                     }
-                    private  void auxCCNaranja(int color, ImageView vista){
-                        switch(color) {
+
+                    private void auxCCNaranja(int color, ImageView vista) {
+                        switch (color) {
                             case 0:
                                 vista.setBackgroundColor(Color.parseColor("#AEB7B6"));
                                 vista.setImageResource(R.drawable.cuadrado);
@@ -1004,8 +1018,9 @@ public class ActivityClasico extends Activity {
                                 break;
                         }
                     }
-                    private  void auxCCMarron(int color, ImageView vista){
-                        switch(color) {
+
+                    private void auxCCMarron(int color, ImageView vista) {
+                        switch (color) {
                             case 0:
                                 vista.setBackgroundColor(Color.parseColor("#AEB7B6"));
                                 vista.setImageResource(R.drawable.cuadrado);
@@ -1042,24 +1057,32 @@ public class ActivityClasico extends Activity {
                     }
 
 
-
                 });
 
             }
 
-            if(comprobarInferiores(piezaActual, tablero, reglas)){
+            if (comprobarInferiores(piezaActual, tablero, reglas)) {
                 tablero = this.bajarPieza(piezaActual, tablero, reglas);
             }
-
         } while (this.comprobarInferiores(piezaActual, tablero, reglas) | !reglas.gameOver(piezaActual, tablero.getMatrizTablero()));
 
         this.reproductor.stop();
 
         Intent intent = new Intent(this, ActivityGameOver.class);
-        intent.putExtra("puntuacion",this.puntuacion);
-        intent.putExtra("modo",this.modoDeJuego);
+        intent.putExtra("puntuacion", this.puntuacion);
+        intent.putExtra("modo", this.modoDeJuego);
         intent.putExtra("paleta", this.paletaSeleccionada);
         startActivity(intent);
         finish();
+    }
+
+    public void cambiarEjecucion(View view) {
+        Button pauseButton = findViewById(R.id.PauseButton);
+        if (pauseButton.getText().equals("Pause")) {
+            pauseButton.setText("Continue");
+        } else {
+            pauseButton.setText("Pause");
+        }
+        pause = !pause;
     }
 }
