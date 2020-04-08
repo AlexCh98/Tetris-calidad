@@ -38,11 +38,18 @@ public class ActivityClasico extends Activity {
     private final int nPiezasEnElArray = 2;
     List<Integer> listaMovimientos;
     List<Pieza> piezas;
+
+    public boolean isMovementDone() {
+        return movementDone;
+    }
+
     Tablero tablero;
     Reglas reglas;
     Handler handler = new Handler();
 
     int paletaSeleccionada;
+
+    private boolean movementDone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -485,6 +492,7 @@ public class ActivityClasico extends Activity {
         ListaCeldas.add(ayuda);
         ayuda = findViewById(R.id.j21);
         ListaCeldas.add(ayuda);
+        movementDone = true;
     }
 
 
