@@ -1,0 +1,50 @@
+query("*", id:)
+query("*", :id)
+query("*", :id)
+query("* id:'a20'")
+query("* id:'a20'", :getBackground)
+query("* id:'a20'", :description)
+query("* id:'a20'", :description, :getBackground)
+query("* id:'a20'", :description)
+query("* id:'a20'", :background)
+query("* id:'a20'")
+query("* id:'a20'", :class)
+query("* id:'a20'", :description)
+query("* id:'a20'", :getBckaground)
+query("* id:'a20'", :getBckaground, :getColot)
+query("* id:'a20'", :getBckaground, :getColor)
+query("* id:'a20'", :getImageView)
+query("* id:'a20'", :getDrawable)
+query("* id:'a20'", :getColor)
+query("* id:'c20'")
+query("* id:'a20'")
+query("* id:'a20'":getImageDrawable)
+query("* id:'a20'",:getImageDrawable)
+query("* id:'a20'",:getDrawable)
+query("* id:'a20'",:getDrawable) 
+query("* id:'c20'",:getDrawable) 
+query("* id:'b20'",:getDrawable) 
+query("* id:'s20'",:getDrawable) 
+query("* id:'d20'",:getDrawable) 
+query("* id:'a20'",) 
+query("* id:'a20'",:id) 
+query("* id:'a20'",:getBackground) 
+query("* id:'a20'",:getBackground :result) 
+query("*", :id ) 
+query("*" ) 
+query("*" ) 
+exit
+cd ..
+exit
+query("view")
+start_test_server_in_background
+start_test_server_in_background
+query("*^")
+query("view")
+I should see "([^\"]*)"
+Sed
+Sed
+query("view")
+query("view")
+eit
+exit
